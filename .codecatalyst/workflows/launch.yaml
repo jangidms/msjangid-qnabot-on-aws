@@ -63,6 +63,7 @@ Actions:
     Configuration:
       Steps:
         - Run: yum install -y nodejs make git
+        - Run: yum install tar
         - Run: npm install
         - Run: npm run config
         - Run: npm run bootstrap
