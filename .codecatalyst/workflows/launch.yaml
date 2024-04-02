@@ -49,7 +49,7 @@ Actions:
     Environment:
       Name: gamma_environment
   deploy-prod:
-    Identifier: aws/build-beta@v1
+    Identifier: aws/build@v1
     Inputs:
       Sources: []
       Artifacts:
