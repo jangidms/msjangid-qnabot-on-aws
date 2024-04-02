@@ -9,7 +9,7 @@ Compute:
   Fleet: Linux.x86-64.Large
 Actions:
   source:
-    Identifier: aws/build-beta@v1
+    Identifier: aws/build@v1
     Inputs:
       Sources:
         - WorkflowSource
@@ -25,7 +25,7 @@ Actions:
       Steps:
         - Run: ls -la
   deploy-gamma:
-    Identifier: aws/build-beta@v1
+    Identifier: aws/build@v1
     Inputs:
       Sources: []
       Artifacts:
