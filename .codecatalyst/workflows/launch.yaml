@@ -65,7 +65,7 @@ Actions:
         - Run: yum install -y nodejs make git
         - Run: npm install
         - Run: npm run config
-        - Run: npm run boostrap
+        - Run: npm run bootstrap
         - Run: npm run up
       Container:
         Image: public.ecr.aws/amazonlinux/amazonlinux:2023
