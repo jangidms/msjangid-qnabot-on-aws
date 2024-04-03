@@ -12,11 +12,11 @@
  *********************************************************************************************************************/
 
 module.exports = {
-    region: 'us-east-1',
+    region: process.env.LAUNCH_OPTIONS_region || 'us-east-1',
     profile: 'default',
-    publicBucket: 'aws-bigdata-blog',
-    publicPrefix: 'artifacts/aws-ai-qna-bot',
-    devEmail: '',
+    publicBucket: process.env.LAUNCH_OPTIONS_publicBucket || '',
+    publicPrefix: process.env.LAUNCH_OPTIONS_publicPrefix || 'artifacts/aws-ai-qna-bot',
+    devEmail: process.env.LAUNCH_OPTIONS_devEmail || '',
     ApprovedDomain: 'NONE',
     Username: 'Admin',
     devEncryption: 'ENCRYPTED',
@@ -31,8 +31,8 @@ module.exports = {
     multiBucketDeployment: false,
     buildType: 'Custom',
     FulfillmentConcurrency: 1,
-    EmbeddingsApi: 'SAGEMAKER',
-    LLMApi: 'SAGEMAKER',
+    EmbeddingsApi: process.env.LAUNCH_OPTIONS_EmbeddingsApi || 'SAGEMAKER',
+    LLMApi: process.env.LAUNCH_OPTIONS_LLMApi || 'SAGEMAKER',
     InstallLexResponseBots: true,
     DefaultKendraIndexId: '',
     devElasticSearchNodeCount: 1,
@@ -53,8 +53,8 @@ if (require.main === module) {
         module.exports.skipCheckTemplate = true;
         module.exports.noStackOutput = true;
     } else {
-        module.exports.devEmail = process.argv[2] || 'user@example.com';
-        module.exports.region = process.argv[3] || 'us-east-1';
+        module.exports.devEmail = process.argv[2] || process.env.LAUNCH_OPTIONS_devEmail || 'user@example.com';
+        module.exports.region = process.argv[3] || process.env.LAUNCH_OPTIONS_region || 'us-east-1';
     }
     console.log(JSON.stringify(module.exports, null, 2));
 }
