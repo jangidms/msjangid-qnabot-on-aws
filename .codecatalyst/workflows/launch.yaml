@@ -24,30 +24,6 @@ Actions:
     Configuration:
       Steps:
         - Run: ls -la
-  deploy-gamma:
-    Identifier: aws/build@v1
-    Inputs:
-      Sources: []
-      Artifacts:
-        - src
-      Variables:
-        - Name: LAUNCH_OPTIONS_region
-    Outputs:
-      AutoDiscoverReports:
-        Enabled: false
-        ReportNamePrefix: rpt
-    Configuration:
-      Steps:
-        - Run: yum install -y nodejs make git
-        - Run: npm install
-        - Run: npm run config
-        - Run: npm run boostrap
-        - Run: npm run up
-      Container:
-        Image: public.ecr.aws/amazonlinux/amazonlinux:2023
-        Registry: ECR
-    Environment:
-      Name: gamma_environment
   deploy-prod:
     Identifier: aws/build@v1
     Inputs:
@@ -56,6 +32,11 @@ Actions:
         - src
       Variables:
         - Name: LAUNCH_OPTIONS_region
+        - Name: LAUNCH_OPTIONS_publicBucket
+        - Name: LAUNCH_OPTIONS_publicPrefix
+        - Name: LAUNCH_OPTIONS_devEmail
+        - Name: LAUNCH_OPTIONS_EmbeddingsApi
+        - Name: LAUNCH_OPTIONS_LLMApi      
     Outputs:
       AutoDiscoverReports:
         Enabled: false
