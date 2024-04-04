@@ -1,5 +1,5 @@
 Name: launch
-SchemaVersion: '1.0'
+SchemaVersion: "1.0"
 Triggers:
   - Type: PUSH
     Branches:
@@ -20,7 +20,7 @@ Actions:
       Artifacts:
         - Name: src
           Files:
-            - '**/*'
+            - "**/*"
     Configuration:
       Steps:
         - Run: ls -la
@@ -43,14 +43,13 @@ Actions:
         ReportNamePrefix: rpt
     Configuration:
       Steps:
-        - Run: yum install -y nodejs make git
-        - Run: yum install tar
+        - Run: yum install -y nodejs make git tar zip
         - Run: npm install
         - Run: npm run config
-        - Run: npm run bootstrap
-        - Run: npm run up
+        - Run: TERM=xterm npm run bootstrap
+        - Run: TERM=xterm npm run deploy
       Container:
-        Image: public.ecr.aws/amazonlinux/amazonlinux:2023
-        Registry: ECR
+        Image: CodeCatalystLinux_x86_64:2024_03
+        Registry: CODECATALYST
     Environment:
       Name: prod_environment

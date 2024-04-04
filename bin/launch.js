@@ -75,24 +75,27 @@ if (require.main === module) {
     try {
         if (stack && op) {
             switch (op) {
-            case 'up':
-                up(stack, options || {});
-                break;
-            case 'update':
-                update(stack, options || {});
-                break;
-            case 'down':
-                down(stack, options || {});
-                break;
-            case 'restart':
-                log('restarting stack', options || {});
-                down(stack, options || {}).then(() => up(stack, options || {}));
-                break;
-            case 'make-sure':
-                sure(stack, options);
-                break;
-            default:
-                argv.outputHelp();
+                case 'up':
+                    up(stack, { inc: true, ...options || {} });
+                    break;
+                case 'deploy':
+                    deploy(stack, options || {});
+                    break;
+                case 'update':
+                    update(stack, options || {});
+                    break;
+                case 'down':
+                    down(stack, options || {});
+                    break;
+                case 'restart':
+                    log('restarting stack', options || {});
+                    down(stack, options || {}).then(() => up(stack, { inc: true, ...options || {} }));
+                    break;
+                case 'make-sure':
+                    sure(stack, options);
+                    break;
+                default:
+                    argv.outputHelp();
             }
         } else {
             argv.outputHelp();
@@ -111,15 +114,30 @@ async function syntax(stack, options) {
         }
     }
 }
+
+async function deploy(stack, options) {
+    const StackName = options.stackName ? options.stackName : name(stack, { inc: true });
+    const describeCmd = new DescribeStacksCommand({
+        StackName,
+    });
+    const describeStackResponse = await cf.send(describeCmd);
+    const stackId = describeStackResponse.Stacks[0].StackId;
+    if (!stackId) {
+        await up(stack, { inc: false, ...options || {} });
+    }
+    else if (stack !== "dev/bootstrap") {
+        await update(stack, options);
+    }
+}
 async function up(stack, options) {
+    log(`launching stack:${stack}`, options);
     await build({
         stack,
         input: options.input,
         silent: options.silent,
     });
     try {
-        const StackName = options.stackName ? options.stackName : name(stack, { inc: true });
-        log(`launching stack:${stack}`, options);
+        const StackName = options.stackName ? options.stackName : name(stack, { inc: options.inc });
         if (!options.dryRun) {
             const template = fs.readFileSync(
                 `${__dirname}/../build/templates/${stack}.json`,
@@ -262,7 +280,7 @@ async function sure(stack, options = {}) {
     } catch (e) {
         if (_.get(e, 'message', '').match(/.*does not exist$/)) {
             log('Stack does not exist', options);
-            return up(stack, options);
+            return deploy(stack, options);
         }
         throw e;
     }
@@ -287,3 +305,4 @@ exports.up = up;
 exports.down = down;
 exports.sure = sure;
 exports.update = update;
+exports.deploy = deploy;
