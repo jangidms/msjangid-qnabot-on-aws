@@ -45,19 +45,19 @@ Actions:
         - Name: LAUNCH_OPTIONS_LexV2BotLocaleIds
         - Name: LAUNCH_OPTIONS_FulfillmentConcurrency
         - Name: LAUNCH_OPTIONS_EmbeddingsApi
-        - Name: SagemakerInitialInstanceCount
+        - Name: LAUNCH_OPTIONS_SagemakerInitialInstanceCount
         - Name: LAUNCH_OPTIONS_EmbeddingsLambdaArn
-        - Name: EmbeddingsLambdaDimensions
+        - Name: LAUNCH_OPTIONS_EmbeddingsLambdaDimensions
         - Name: LAUNCH_OPTIONS_LLMApi
         - Name: LAUNCH_OPTIONS_LLMSagemakerInstanceType
-        - Name: LLMSagemakerInitialInstanceCount
+        - Name: LAUNCH_OPTIONS_LLMSagemakerInitialInstanceCount
         - Name: LAUNCH_OPTIONS_LLMLambdaArn
         - Name: LAUNCH_OPTIONS_InstallLexResponseBots
         - Name: LAUNCH_OPTIONS_DefaultKendraIndexId
         - Name: LAUNCH_OPTIONS_ElasticSearchNodeCount
         - Name: LAUNCH_OPTIONS_ElasticSearchInstanceType
         - Name: LAUNCH_OPTIONS_ElasticSearchEBSVolumeSize
-        - Name: KibanaDashboardRetentionMinutes
+        - Name: LAUNCH_OPTIONS_KibanaDashboardRetentionMinutes
         - Name: LAUNCH_OPTIONS_XraySetting
     Outputs:
       AutoDiscoverReports:
