@@ -120,8 +120,18 @@ async function deploy(stack, options) {
     const describeCmd = new DescribeStacksCommand({
         StackName,
     });
-    const describeStackResponse = await cf.send(describeCmd);
-    const stackId = describeStackResponse.Stacks[0].StackId;
+    let stackId;
+    try {
+        const describeStackResponse = await cf.send(describeCmd);
+        stackId = describeStackResponse.Stacks[0].StackId;
+    }
+    catch (e) {
+        if (_.get(e, 'message', '').match(/.*does not exist$/)) {
+            console.log("Stack doesn't exist", StackName);
+        } else {
+            throw e;
+        }
+    }
     if (!stackId) {
         await up(stack, { inc: false, ...options || {} });
     }

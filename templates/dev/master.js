@@ -25,14 +25,18 @@ module.exports = Promise.all([
     base.Parameters.PublicOrPrivate.Default = config.devPublicOrPrivate ? config.devPublicOrPrivate : base.Parameters.PublicOrPrivate.Default;
     base.Parameters.Language.Default = config.devLanguage ? config.devLanguage : base.Parameters.Language.Default;
     base.Parameters.ElasticSearchNodeCount.Default = config.devElasticSearchNodeCount ? config.devElasticSearchNodeCount : base.Parameters.ElasticSearchNodeCount.Default;
+    base.Parameters.ElasticSearchEBSVolumeSize.Default = config.ElasticSearchEBSVolumeSize ? config.ElasticSearchEBSVolumeSize : base.Parameters.ElasticSearchEBSVolumeSize.Default;
     base.Parameters.DefaultKendraIndexId.Default = config.DefaultKendraIndexId ? config.DefaultKendraIndexId : base.Parameters.DefaultKendraIndexId.Default;
     base.Parameters.Username.Default = config.Username ? config.Username : base.Parameters.Username.Default;
     base.Parameters.XraySetting.Default = config.XraySetting ? config.XraySetting : base.Parameters.XraySetting.Default;
+    base.Parameters.SagemakerInitialInstanceCount.Default = config.SagemakerInitialInstanceCount ? config.SagemakerInitialInstanceCount : base.Parameters.SagemakerInitialInstanceCount.Default;
     base.Parameters.EmbeddingsLambdaArn.Default = config.EmbeddingsLambdaArn ? config.EmbeddingsLambdaArn : base.Parameters.EmbeddingsLambdaArn.Default;
+    base.Parameters.EmbeddingsLambdaDimensions.Default = config.EmbeddingsLambdaDimensions ? config.EmbeddingsLambdaDimensions : base.Parameters.EmbeddingsLambdaDimensions.Default;
     base.Parameters.LLMSagemakerInstanceType.Default = config.LLMSagemakerInstanceType ? config.LLMSagemakerInstanceType : base.Parameters.LLMSagemakerInstanceType.Default;
     base.Parameters.LLMLambdaArn.Default = config.LLMLambdaArn ? config.LLMLambdaArn : base.Parameters.LLMLambdaArn.Default;
     base.Parameters.ApprovedDomain.Default = config.ApprovedDomain ? config.ApprovedDomain : base.Parameters.ApprovedDomain.Default;
     base.Parameters.ElasticSearchInstanceType.Default = config.ElasticSearchInstanceType ? config.ElasticSearchInstanceType : base.Parameters.ElasticSearchInstanceType.Default;
+    base.Parameters.KibanaDashboardRetentionMinutes.Default = config.KibanaDashboardRetentionMinutes ? config.KibanaDashboardRetentionMinutes : base.Parameters.KibanaDashboardRetentionMinutes.Default;
     base.Parameters.VPCSubnetIdList.Default = config.VPCSubnetIdList ? config.VPCSubnetIdList : base.Parameters.VPCSubnetIdList.Default;
     base.Parameters.VPCSecurityGroupIdList.Default = config.VPCSecurityGroupIdList ? config.VPCSecurityGroupIdList : base.Parameters.VPCSecurityGroupIdList.Default;
     base.Parameters.LexBotVersion.Default = config.LexBotVersion ? config.LexBotVersion : base.Parameters.LexBotVersion.Default;
@@ -40,6 +44,7 @@ module.exports = Promise.all([
     base.Parameters.LexV2BotLocaleIds.Default = config.LexV2BotLocaleIds ? config.LexV2BotLocaleIds : base.Parameters.LexV2BotLocaleIds.Default;
     base.Parameters.EmbeddingsApi.Default = config.EmbeddingsApi ? config.EmbeddingsApi : base.Parameters.EmbeddingsApi.Default;
     base.Parameters.LLMApi.Default = config.LLMApi ? config.LLMApi : base.Parameters.LLMApi.Default;
+    base.Parameters.LLMSagemakerInitialInstanceCount.Default = config.LLMSagemakerInitialInstanceCount ? config.LLMSagemakerInitialInstanceCount : base.Parameters.LLMSagemakerInitialInstanceCount.Default;
     base.Parameters.InstallLexResponseBots.Default = config.InstallLexResponseBots ? config.InstallLexResponseBots : base.Parameters.InstallLexResponseBots.Default;
     return base;
 });
