@@ -34,9 +34,28 @@ Actions:
         - Name: LAUNCH_OPTIONS_region
         - Name: LAUNCH_OPTIONS_publicBucket
         - Name: LAUNCH_OPTIONS_publicPrefix
-        - Name: LAUNCH_OPTIONS_devEmail
+        - Name: LAUNCH_OPTIONS_adminEmail
+        - Name: LAUNCH_OPTIONS_adminUsername
+        - Name: LAUNCH_OPTIONS_approvedDomain
+        - Name: LAUNCH_OPTIONS_Encryption
+        - Name: LAUNCH_OPTIONS_publicOrPrivate
+        - Name: LAUNCH_OPTIONS_Language
+        - Name: LAUNCH_OPTIONS_LexBotVersion
+        - Name: LAUNCH_OPTIONS_LexV2BotLocaleIds
+        - Name: LAUNCH_OPTIONS_stackNamePrefix
+        - Name: LAUNCH_OPTIONS_FulfillmentConcurrency
         - Name: LAUNCH_OPTIONS_EmbeddingsApi
-        - Name: LAUNCH_OPTIONS_LLMApi      
+        - Name: LAUNCH_OPTIONS_EmbeddingsLambdaArn
+        - Name: LAUNCH_OPTIONS_LLMApi
+        - Name: LAUNCH_OPTIONS_LLMSagemakerInstanceType
+        - Name: LAUNCH_OPTIONS_LLMLambdaArn
+        - Name: LAUNCH_OPTIONS_InstallLexResponseBots
+        - Name: LAUNCH_OPTIONS_DefaultKendraIndexId
+        - Name: LAUNCH_OPTIONS_ElasticSearchNodeCount
+        - Name: LAUNCH_OPTIONS_ElasticSearchInstanceType
+        - Name: LAUNCH_OPTIONS_XraySetting
+        - Name: LAUNCH_OPTIONS_VPCSubnetIdList
+        - Name: LAUNCH_OPTIONS_VPCSecurityGroupIdList
     Outputs:
       AutoDiscoverReports:
         Enabled: false
