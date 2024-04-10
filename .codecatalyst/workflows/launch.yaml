@@ -110,8 +110,18 @@ Actions:
         ReportNamePrefix: rpt
     Configuration:
       Steps:
+       #- Run: wget https://download-installer.cdn.mozilla.net/pub/firefox/releases/124.0.2/linux-x86_64/en-US/firefox-124.0.2.tar.bz2
+        - Run: yum groupinstall -y "Development Tools"
+        - Run: yum install -y dbus-glib.x86_64
+        - Run: yum install -y gtk3-devel
+        - Run: yum install -y alsa-lib-devel
+        - Run: wget https://download-installer.cdn.mozilla.net/pub/firefox/releases/118.0.2/linux-x86_64/en-US/firefox-118.0.2.tar.bz2
+        - Run: tar -xf firefox-118.0.2.tar.bz2
+        - Run: mv firefox /opt
+        - Run: ln -s /opt/firefox/firefox /usr/bin/firefox
+        - Run: firefox --version
         - Run: cd .nightswatch
-        - Run: npm install geckodriver
+        #- Run: npm install geckodriver
         - Run: npm install chromedriver
         - Run: python3 -m virtualenv venv
         - Run: source ./venv/bin/activate
@@ -119,10 +129,10 @@ Actions:
         - Run: export CURRENT_STACK_REGION=$LAUNCH_OPTIONS_region
         - Run: export CURRENT_STACK_NAME=$LAUNCH_OPTIONS_stackNamePrefix-dev-dev-master-1
         - Run: export EMAIL=$LAUNCH_OPTIONS_adminEmail
-        - Run: export HEADLESS_BROWSER='false'
         - Run: export TIMESTAMPS='true'
         - Run: cd functional
-        - Run: pytest -v
+        - Run: pytest -vs test_1_login.py
+
       Container:
         Image: CodeCatalystLinux_x86_64:2024_03
         Registry: CODECATALYST
